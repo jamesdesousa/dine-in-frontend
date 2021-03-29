@@ -1,11 +1,11 @@
 import React, { useState } from "react";
-function RestaurantDetails() {
+function RestaurantDetails({name, address, review, rating, location, cuisine, description, image}) {
 
     return (
         <div>
-            <h1 className="restaurant Header"> Restaurant Name</h1>
-            <img src="" alt="Restaurant Picture" />
-            <p className="description"> Description</p>
+            {/* <h1 className="restaurant Header">{name}</h1>
+            <img src={image} alt="Restaurant Picture" />
+            <p className="description"> {description}</p> */}
         </div>
     )
 }
