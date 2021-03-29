@@ -1,6 +1,10 @@
 import React, { useState } from "react";
 
-function Search() {
+function Search({search, setSearch}) {
+
+    function updateSearch(event) {
+        setSearch(event.target.value)
+    }
 
     return (
         <div>
@@ -10,8 +14,8 @@ function Search() {
                 type="text"
                 id="search"
                 placeholder="Type a name to search..."
-                // onChange={(e) => handleSearch(e.target.value)}
-                value=""
+                onChange={updateSearch}
+                value= {search}
                 />
             </div>
 

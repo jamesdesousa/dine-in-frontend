@@ -3,9 +3,14 @@ function RestaurantDetails({name, address, review, rating, location, cuisine, de
 
     return (
         <div>
-            {/* <h1 className="restaurant Header">{name}</h1>
-            <img src={image} alt="Restaurant Picture" />
-            <p className="description"> {description}</p> */}
+                    <p>Rating: {rating}</p>
+                    <p>Cusine:{cuisine}</p>
+                    <p>Location: {location}</p>
+                    <p>Address: {address}</p> 
+                    <p>Description: {description}</p>
+                    <p>Reviews: {review}</p> 
+                    
+                
         </div>
     )
 }

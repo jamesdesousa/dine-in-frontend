@@ -7,23 +7,29 @@ function RestaurantCard({name, address, review, rating, location, cuisine, descr
     function showDetails() {
         setDetails(!details)
     }
-    console.log({name, image, description})
+    
     return(
         <div>
-            <li className="restaurantList">
+            <li onClick={showDetails} className="restaurantList">
                 {details ? (
                 <div>
                 <img src={image} alt={name}/>
-                <p onClick={showDetails}> {name} </p>
-                <h5> {rating} </h5>
+                <h5 onClick={showDetails}> {name} </h5>
+                <h5> Rating: {rating} </h5>
                 </div>
                 ) : (
                 <div>
                 <img   src={image} alt={name}/>
-                <p onClick={showDetails}> {name} </p>
-                <h5> {rating} </h5>
-                <p className="description"> {description}</p> 
-                <p>{review}</p>
+                <p> {name} </p>
+                <RestaurantDetails 
+                name={name}
+                image={image}
+                location={location.borough}
+                cuisine={cuisine.name}
+                review={review}
+                rating={rating}
+                description={description} 
+                address= {address} />
                 </div>
                 )
                 }

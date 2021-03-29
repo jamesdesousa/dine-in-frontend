@@ -2,13 +2,13 @@ import React, { useState } from "react";
 import Search from "./Search";
 import RestaurantForm from "./RestaurantForm";
 
-function Header() {
+function Header({search, setSearch, addRestaurant}) {
 
     return(
         <div>
             <h1> LOGO </h1>
-            <Search />
-            <RestaurantForm />
+            <Search search={search} setSearch={setSearch}/>
+            <RestaurantForm addRestaurant={addRestaurant}/>
             
             <select  id="cuisineList">
                     <option value="vegan">Vegan</option>
