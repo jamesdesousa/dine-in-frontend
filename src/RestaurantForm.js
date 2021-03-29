@@ -19,8 +19,8 @@ function RestaurantForm ({addRestaurant}) {
           name: name,
           image: image,
           address: address,
-          cuisine: cuisine, 
-          location: location,
+          cuisine_id: parseInt(cuisine), 
+          location_id: parseInt(location),
           description: description,
           review: review,
           rating: rating
@@ -36,7 +36,7 @@ function RestaurantForm ({addRestaurant}) {
           .then(response => response.json())
           .then(finalForm => {
             addRestaurant(finalForm)
-                console.log(finalForm)
+            
           })
       }
     
@@ -54,19 +54,19 @@ function RestaurantForm ({addRestaurant}) {
          <input type="text" name="address" placeholder="Address" value = {address} onChange = {e=> setAddress(e.target.value)}
         />
            <select value= {cuisine} onChange = {e => setCuisine(e.target.value)} id="cuisineList">
-                    <option value="vegan">Vegan</option>
-                    <option value="thai">Thai</option>
-                    <option value="italian">Italian</option>
-                    <option value="soul">Soul Food</option>
-                    <option value="indian">Indian</option>
+                    <option value= "1">Vegan</option>
+                    <option value= "2">Thai</option>
+                    <option value= "3">Italian</option>
+                    <option value= "4">Soul Food</option>
+                    <option value= "5">Indian</option>
             </select>
 
             <select value={location} onChange = {e => setLocation(e.target.value)} id="boroughsList">
-                    <option value="brooklyn">Brooklyn</option>
-                    <option value="queens">Queens</option>
-                    <option value="manhatten">Manhatten</option>
-                    <option value="staten">Staten Island</option>
-                    <option value="bronx">Bronx</option>
+                    <option value="1">Brooklyn</option>
+                    <option value="2">Queens</option>
+                    <option value="3">Manhattan</option>
+                    <option value="4">Staten Island</option>
+                    <option value="5">Bronx</option>
             </select>
 
         <button type="submit">Add Restaurant</button>

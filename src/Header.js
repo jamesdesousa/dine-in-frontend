@@ -21,7 +21,7 @@ function Header({search, setSearch, addRestaurant}) {
             <select  id="boroughsList">
                     <option value="brooklyn">Brooklyn</option>
                     <option value="queens">Queens</option>
-                    <option value="manhatten">Manhatten</option>
+                    <option value="manhattan">Manhattan</option>
                     <option value="staten">Staten Island</option>
                     <option value="bronx">Bronx</option>
             </select>

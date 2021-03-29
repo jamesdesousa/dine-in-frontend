@@ -4,7 +4,7 @@ import RestaurantCard from "./RestaurantCard.js"
 function RestaurantList({restaurants, search, setSearch}) {
   
 
-    const filteredRestaurants= restaurants.filter(restaurant => {
+     const filteredRestaurants= restaurants.filter(restaurant => {
             return restaurant.name.toLowerCase().includes(search.toLowerCase())
     })
 
