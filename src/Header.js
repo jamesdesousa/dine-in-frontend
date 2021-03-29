@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import Search from "./Search";
+import RestaurantForm from "./RestaurantForm";
 
 function Header() {
 
@@ -7,6 +8,8 @@ function Header() {
         <div>
             <h1> LOGO </h1>
             <Search />
+            <RestaurantForm />
+            
             <select  id="cuisineList">
                     <option value="vegan">Vegan</option>
                     <option value="thai">Thai</option>
