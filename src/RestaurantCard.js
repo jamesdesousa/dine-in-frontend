@@ -17,7 +17,17 @@ function RestaurantCard({restaurant, deleteRestaurants}) {
     }
 
     function handleChange(e) {
-        setRating(e.target.value)
+        if (parseInt(e.target.value) === 1) {
+            setRating("🌶")
+        } else if (parseInt(e.target.value) === 2) {
+            setRating('🌶🌶')
+        } else if (parseInt(e.target.value) === 3) {
+            setRating('🌶🌶🌶')
+        } else if (parseInt(e.target.value) === 4) {
+            setRating('🌶🌶🌶🌶')
+        } else if (parseInt(e.target.value) === 5) {
+            setRating('🌶🌶🌶🌶🌶')
+        } 
     }
     
     // function handleSubmit(e) {
@@ -43,7 +53,7 @@ function RestaurantCard({restaurant, deleteRestaurants}) {
                 <h5> Rating: {restaurant.rating} </h5>
                 </div>
                 ) : (
-                <div>
+                <div >
                 <img src={restaurant.image} alt={restaurant.name} />
                 <p> {restaurant.name} </p>
                 <RestaurantDetails 
@@ -56,6 +66,7 @@ function RestaurantCard({restaurant, deleteRestaurants}) {
                 description={restaurant.description} 
                 address= {restaurant.address} 
                 handleDelete={handleDelete}
+                handleChange={handleChange}
                 />
                 </div>
                 )

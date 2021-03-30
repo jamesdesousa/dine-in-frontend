@@ -1,10 +1,11 @@
 import React, { useState } from "react";
-function RestaurantDetails({name, address, review, rating, location, cuisine, description, image, handleDelete}) {
+import RatingForm from "./RatingForm";
+function RestaurantDetails({name, address, review, rating, location, cuisine, description, image, handleDelete, handleChange}) {
 
     return (
-        <div>
+        <div className="ui card">
                     <p>Rating: {rating}</p>
-                    {/* Slider here */}
+                    <RatingForm handleChange={handleChange} rating={rating}/>
                     <p>Cusine:{cuisine}</p>
                     <p>Location: {location}</p>
                     <p>Address: {address}</p> 

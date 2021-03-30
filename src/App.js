@@ -62,26 +62,28 @@ function addRestaurant(newRestaurant){
 
   return (
     <div >
+      <Switch>
+      <Route exact path="/restaurantlist">
       <Header search={search} setSearch={setSearch} addRestaurant={addRestaurant} restaurants={restaurants} cuisineType={cuisineType} setCuisineType={setCuisineType} locationType={locationType} setLocationType={setLocationType}/>
       <RestaurantList restaurants={restaurants} search={search} setSearch={setSearch} locationFilter={locationFilter} deleteRestaurants={deleteRestaurants} />
+      </Route>
+      <Route exact path="/new">
+        <RestaurantForm  />
+      </Route>
+      <Route exact path="/restaurant/:id">
+        <RestaurantCard />
+      </Route>
+      <Route path="*">
+        <h1>404 not found</h1>
+      </Route>
+    </Switch>
     </div>
   );
+
+  
 }
 
-      <Switch>
-        <Route exact path="/restaurantlist">
-          {/* <RestaurantList /> */}
-        </Route>
-        <Route exact path="/new">
-          <RestaurantForm  />
-        </Route>
-        <Route exact path="/restaurant/:id">
-          <RestaurantCard />
-        </Route>
-        <Route path="*">
-          <h1>404 not found</h1>
-        </Route>
-      </Switch>
+   
 
 
 export default App;
