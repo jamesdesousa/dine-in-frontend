@@ -1,36 +1,39 @@
 import React, {useState} from "react";
 import RestaurantCard from "./RestaurantCard.js"
 
-function RestaurantList({restaurants, search, setSearch}) {
+function RestaurantList({restaurants, search, setSearch, locationFilter, deleteRestaurants}) {
+    
+
   
 
-     const filteredRestaurants= restaurants.filter(restaurant => {
+     const filteredRestaurants= locationFilter.filter(restaurant => {
             return restaurant.name.toLowerCase().includes(search.toLowerCase())
     })
 
-    const restaurantArray = filteredRestaurants.map((restaurant) => {
+    const restaurantArray = filteredRestaurants.map((restaurantObj) => {
         
         return (
         <RestaurantCard 
-        key={restaurant.id}
-        name={restaurant.name}
-        image={restaurant.image}
-        location={restaurant.location}
-        cuisine={restaurant.cuisine}
-        review={restaurant.review}
-        rating={restaurant.rating}
-        description={restaurant.description}
-        address={restaurant.address}
-        
+        key={restaurantObj.id}
+        // name={restaurant.name}
+        // image={restaurant.image}
+        // location={restaurant.location}
+        // cuisine={restaurant.cuisine}
+        // review={restaurant.review}
+        // rating={restaurant.rating}
+        // description={restaurant.description}
+        // address={restaurant.address}
+        deleteRestaurants={deleteRestaurants}
+        restaurant={restaurantObj}
          />
 
         )
     })
 
     return (
-        <div>
+        <ul className="restaurants">
         {restaurantArray}
-        </div>
+        </ul>
     );
 }
 

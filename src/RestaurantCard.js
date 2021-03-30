@@ -1,35 +1,62 @@
 import React, { useState } from "react";
 import RestaurantDetails from './RestaurantDetails'
 
-function RestaurantCard({name, address, review, rating, location, cuisine, description, image}) {
+function RestaurantCard({restaurant, deleteRestaurants}) {
+
+    // name, address, review, rating, location, cuisine, description, image, 
+
     const [details, setDetails] = useState(true)
+    const [rating, setRating] = useState(restaurant.rating)
 
     function showDetails() {
         setDetails(!details)
     }
+
+    function handleDelete() {
+        deleteRestaurants(restaurant.id)
+    }
+
+    function handleChange(e) {
+        setRating(e.target.value)
+    }
     
+    // function handleSubmit(e) {
+    //     e.preventDefault();
+    //     fetch(`http://localhost:3000/restaurants/${restaurant.id}`, {
+    //         method: 'PATCH',
+    //         headers: {
+    //             'Content-Type': 'application/json',
+    //             'accept': 'application/json',
+    //         },
+    //         body: JSON.stringify({rating: setRating(rating) })
+    //     })
+    // }
+
+
     return(
         <div>
-            <li onClick={showDetails} className="restaurantList">
+            <li onClick={showDetails} className="restaurant">
                 {details ? (
                 <div>
-                <img src={image} alt={name}/>
-                <h5 onClick={showDetails}> {name} </h5>
-                <h5> Rating: {rating} </h5>
+                <img src={restaurant.image} alt={restaurant.name} width='33%' />
+                <h5 onClick={showDetails}> {restaurant.name} </h5>
+                <h5> Rating: {restaurant.rating} </h5>
                 </div>
                 ) : (
                 <div>
-                <img   src={image} alt={name}/>
-                <p> {name} </p>
+                <img src={restaurant.image} alt={restaurant.name} />
+                <p> {restaurant.name} </p>
                 <RestaurantDetails 
-                name={name}
-                image={image}
-                location={location.borough}
-                cuisine={cuisine.name}
-                review={review}
-                rating={rating}
-                description={description} 
-                address= {address} />
+                name={restaurant.name}
+                image={restaurant.image}
+                location={restaurant.location.borough}
+                cuisine={restaurant.cuisine.name}
+                review={restaurant.review}
+                rating={restaurant.rating}
+                description={restaurant.description} 
+                address= {restaurant.address} 
+                handleDelete={handleDelete}
+                />
                 </div>
                 )
                 }

@@ -2,28 +2,31 @@ import React, { useState } from "react";
 import Search from "./Search";
 import RestaurantForm from "./RestaurantForm";
 
-function Header({search, setSearch, addRestaurant}) {
+function Header({search, setSearch, addRestaurant, restaurants, cuisineType, setCuisineType, locationType, setLocationType}) {
+    
 
     return(
-        <div>
-            <h1> LOGO </h1>
+        <div className="header">
+            <h1 className="logo"> DINE-IN </h1>
             <Search search={search} setSearch={setSearch}/>
             <RestaurantForm addRestaurant={addRestaurant}/>
             
-            <select  id="cuisineList">
-                    <option value="vegan">Vegan</option>
-                    <option value="thai">Thai</option>
-                    <option value="italian">Italian</option>
-                    <option value="soul">Soul Food</option>
-                    <option value="indian">Indian</option>
+            <select value={cuisineType} onChange={(e) => setCuisineType(e.target.value)} id="cuisineList">
+                    <option value="0">All</option>
+                    <option value="1">Vegan</option>
+                    <option value="2">Thai</option>
+                    <option value="3">Italian</option>
+                    <option value="4">Soul Food</option>
+                    <option value="5">Indian</option>
             </select>
 
-            <select  id="boroughsList">
-                    <option value="brooklyn">Brooklyn</option>
-                    <option value="queens">Queens</option>
-                    <option value="manhattan">Manhattan</option>
-                    <option value="staten">Staten Island</option>
-                    <option value="bronx">Bronx</option>
+            <select value={locationType} onChange={(e) => setLocationType(e.target.value)} id="boroughsList">
+                    <option value="0">All</option>
+                    <option value="1">Brooklyn</option>
+                    <option value="2">Queens</option>
+                    <option value="3">Manhattan</option>
+                    <option value="4">Staten Island</option>
+                    <option value="5">Bronx</option>
             </select>
 
          
