@@ -26,7 +26,7 @@ function RestaurantList({handleChange, rating, search, setSearch, locationFilter
     })
 
     return (
-        <ul className="restaurants">
+        <ul className="ui grid ui link cards">
         {restaurantArray}
         </ul>
     );

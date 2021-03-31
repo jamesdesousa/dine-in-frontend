@@ -14,7 +14,7 @@ function RestaurantDetails({handleDelete, locationFilter, handleSubmit, handleCh
     setSingleRestaurant(locationFilter[id - 1])
 
     }, [id])
-
+    console.log(singleRestaurant.rating)
     {!!singleRestaurant.rating && setRating(parseInt(singleRestaurant.rating.length) / 2)}
 
     
@@ -23,7 +23,7 @@ function RestaurantDetails({handleDelete, locationFilter, handleSubmit, handleCh
 
     return (
         <div className="restaurant">
-                     <img src={singleRestaurant.image} />
+                     <img src={singleRestaurant.image} width= "900" height="600"/>
                     <p>Name: {singleRestaurant.name} </p>   
                     <p>Rating: {singleRestaurant.rating}</p>
                     <form onSubmit={handleSubmit}>

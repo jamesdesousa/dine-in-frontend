@@ -4,12 +4,18 @@ import RestaurantForm from "./RestaurantForm";
 import Logo from "./Logo";
 
 function Header({search, setSearch, addRestaurant, restaurants, cuisineType, setCuisineType, locationType, setLocationType}) {
-    
+    const [restaurantForm, setRestaurantForm] = useState(false)
 
     return(
         <div className="header">
             
             <Search search={search} setSearch={setSearch}/>
+            
+            {/* {inStock ? (
+            <button onClick = {stock} className="primary">In Stock</button>
+                ) : (
+                <button>Out of Stock</button> 
+                )} */}
             <RestaurantForm addRestaurant={addRestaurant}/>
             
             <select value={cuisineType} onChange={(e) => setCuisineType(e.target.value)} id="cuisineList">

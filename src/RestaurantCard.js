@@ -57,10 +57,10 @@ function RestaurantCard({restaurant, deleteRestaurants, handleChange, rating, ha
 
     return(
         <div>
-            <li  className="restaurant">
+            <li  className="card">
             
                 <div>
-                <img src={restaurant.image} alt={restaurant.name} width='33%' />
+                <img height= {300} width={350} src={restaurant.image} alt={restaurant.name}  />
                 <h5>
                 <Link to={`/restaurant/${restaurant.id}`} > {restaurant.name} </Link>
                 </h5>

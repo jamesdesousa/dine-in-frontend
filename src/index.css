@@ -5,22 +5,36 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  /* background-color: #eba834; */
+
 }
+
 
 * {
   margin: 0; 
   padding: 0;
   box-sizing: border-box;
+  background: #eba834;
+
+  
 }
+/* #left-padding {
+  background-color: #eba834;
+}
+
+#right-padding {
+  background-color: #eba834;
+
+} */
 .header {
-  
+  /* background-color: #eba834; */
   position: absolute;
-  top:5%;
+  top:10%;
 }
-.header .logo {
+.logo {
   position: absolute;
-  
-  left: 100%;
+  top: 5%;
+  left: 50%;
   transform: translate(-50%, -50%);
 }
 
@@ -31,14 +45,26 @@ body {
   display: flex;
   flex-direction: row;
 }
-.restaurant img {
-  width: 600px;
-}
+
 .restaurant {
+  position: absolute;
+  top: 16%;
+  left: 50%; 
+  transform: translate( -50%);
+  list-style-type: none;
   margin: 1rem;
 }
 
+.ui {
+  position: absolute;
+  top: 25%;
+  list-style-type: none;
 
+}
+
+.card {
+  background-size: contain;
+}
 
 
 code {
