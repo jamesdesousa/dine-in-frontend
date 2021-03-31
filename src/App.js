@@ -6,6 +6,9 @@ import Header from "./Header.js"
 import RestaurantList from "./RestaurantList.js"
 import RestaurantForm from './RestaurantForm';
 import RestaurantCard from "./RestaurantCard.js"
+import RestaurantDetails from './RestaurantDetails';
+import {useParams} from 'react-router-dom'
+
 
 
 function App() {
@@ -14,6 +17,10 @@ function App() {
   const [restaurants, setRestaurants] = useState([])
   const [cuisineType, setCuisineType] = useState('0')
   const [locationType, setLocationType] = useState('0')
+  
+
+  const [singleId, setSingleId] = useState(2)
+  const [rating, setRating] = useState(0)
 
   useEffect(() => {
   fetch('http://127.0.0.1:3000/restaurants')
@@ -47,7 +54,8 @@ function addRestaurant(newRestaurant){
       return restaurant.location.id === (parseInt(locationType))
       }
     })
-
+    
+  console.log(locationFilter[singleId - 1])
     function deleteRestaurants(id) {
       fetch(`http://localhost:3000/restaurants/${id}`, {
         method: "DELETE",
@@ -58,6 +66,41 @@ function addRestaurant(newRestaurant){
     
     }
 
+    function handleChange(e) {
+      if (parseInt(e.target.value) === 1) {
+        (locationFilter[singleId - 1].rating) = "🌶"
+        setRating(locationFilter[singleId - 1].rating)
+
+      } else if (parseInt(e.target.value) === 2) {
+        (locationFilter[singleId - 1].rating) = '🌶🌶'
+        setRating(locationFilter[singleId - 1].rating)
+
+      } else if (parseInt(e.target.value) === 3) {
+        (locationFilter[singleId - 1].rating)='🌶🌶🌶'
+        setRating(locationFilter[singleId - 1].rating)
+
+      } else if (parseInt(e.target.value) === 4) {
+        (locationFilter[singleId - 1].rating)='🌶🌶🌶🌶'
+        setRating(locationFilter[singleId - 1].rating)
+
+      } else if (parseInt(e.target.value) === 5) {
+        (locationFilter[singleId - 1].rating)= '🌶🌶🌶🌶🌶'
+        setRating(locationFilter[singleId - 1].rating)
+
+      } 
+  }
+
+  function handleSubmit(e) {
+    e.preventDefault();
+    fetch(`http://localhost:3000/restaurants/${singleId}`, {
+        method: 'PATCH',
+        headers: {
+            'Content-Type': 'application/json',
+            'accept': 'application/json',
+        },
+        body: JSON.stringify({rating: locationFilter[singleId - 1].rating })
+    })
+}
 
 
   return (
@@ -65,13 +108,13 @@ function addRestaurant(newRestaurant){
       <Switch>
       <Route exact path="/restaurantlist">
       <Header search={search} setSearch={setSearch} addRestaurant={addRestaurant} restaurants={restaurants} cuisineType={cuisineType} setCuisineType={setCuisineType} locationType={locationType} setLocationType={setLocationType}/>
-      <RestaurantList restaurants={restaurants} search={search} setSearch={setSearch} locationFilter={locationFilter} deleteRestaurants={deleteRestaurants} />
+      <RestaurantList restaurants={restaurants} search={search} setSearch={setSearch} locationFilter={locationFilter} deleteRestaurants={deleteRestaurants} handleChange={handleChange}   />
       </Route>
       <Route exact path="/new">
         <RestaurantForm  />
       </Route>
       <Route exact path="/restaurant/:id">
-        <RestaurantCard />
+        <RestaurantDetails rating = {rating} locationFilter={locationFilter} handleChange={handleChange} handleSubmit={handleSubmit} singleId={singleId} setSingleId={setSingleId} setRating={setRating}/>
       </Route>
       <Route path="*">
         <h1>404 not found</h1>

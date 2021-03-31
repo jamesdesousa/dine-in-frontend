@@ -1,12 +1,15 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import RestaurantDetails from './RestaurantDetails'
+import { Link } from "react-router-dom";
+import {useParams} from 'react-router-dom'
 
-function RestaurantCard({restaurant, deleteRestaurants}) {
+
+function RestaurantCard({restaurant, deleteRestaurants, handleChange, rating, handleSubmit}) {
+    // const [singleRestaurant, setSingleRestaurant] = useState([])
 
     // name, address, review, rating, location, cuisine, description, image, 
 
     const [details, setDetails] = useState(true)
-    const [rating, setRating] = useState(restaurant.rating)
 
     function showDetails() {
         setDetails(!details)
@@ -16,61 +19,57 @@ function RestaurantCard({restaurant, deleteRestaurants}) {
         deleteRestaurants(restaurant.id)
     }
 
-    function handleChange(e) {
-        if (parseInt(e.target.value) === 1) {
-            setRating("🌶")
-        } else if (parseInt(e.target.value) === 2) {
-            setRating('🌶🌶')
-        } else if (parseInt(e.target.value) === 3) {
-            setRating('🌶🌶🌶')
-        } else if (parseInt(e.target.value) === 4) {
-            setRating('🌶🌶🌶🌶')
-        } else if (parseInt(e.target.value) === 5) {
-            setRating('🌶🌶🌶🌶🌶')
-        } 
-    }
-    
-    // function handleSubmit(e) {
-    //     e.preventDefault();
-    //     fetch(`http://localhost:3000/restaurants/${restaurant.id}`, {
-    //         method: 'PATCH',
-    //         headers: {
-    //             'Content-Type': 'application/json',
-    //             'accept': 'application/json',
-    //         },
-    //         body: JSON.stringify({rating: setRating(rating) })
+
+    // const params = useParams()
+
+    // const id = params.id 
+    // useEffect(() => {
+    //     fetch(`http://localhost:3000/restaurants/${id}`)
+    //     .then(response => response.json())
+    //     .then(restaurant => {
+    //       setSingleRestaurant(restaurant)
     //     })
-    // }
+    // },[id])
+
+    // console.log(singleRestaurant)
+
+    // const singleRestaurant1 = singleRestaurant.map((restaurant) => {
+    //     return  <RestaurantDetails
+    //     key={restaurant.id}
+    //     name={restaurant.name}
+    //     image={restaurant.image}
+    //     location={restaurant.location}
+    //     cuisine={restaurant.cuisine}
+    //     review={restaurant.review}
+    //     rating={restaurant.rating}
+    //     description={restaurant.description}
+    //     address={restaurant.address}
+    //     singleRestaurant={restaurant}
+    //     />
+    // })
+     
+    
+
+   
+    
+
 
 
     return(
         <div>
-            <li onClick={showDetails} className="restaurant">
-                {details ? (
+            <li  className="restaurant">
+            
                 <div>
                 <img src={restaurant.image} alt={restaurant.name} width='33%' />
-                <h5 onClick={showDetails}> {restaurant.name} </h5>
-                <h5> Rating: {restaurant.rating} </h5>
+                <h5>
+                <Link to={`/restaurant/${restaurant.id}`} > {restaurant.name} </Link>
+                </h5>
+                <h5 > Rating: {restaurant.rating} </h5>
                 </div>
-                ) : (
-                <div >
-                <img src={restaurant.image} alt={restaurant.name} />
-                <p> {restaurant.name} </p>
-                <RestaurantDetails 
-                name={restaurant.name}
-                image={restaurant.image}
-                location={restaurant.location.borough}
-                cuisine={restaurant.cuisine.name}
-                review={restaurant.review}
-                rating={restaurant.rating}
-                description={restaurant.description} 
-                address= {restaurant.address} 
-                handleDelete={handleDelete}
-                handleChange={handleChange}
-                />
-                </div>
-                )
-                }
+            
+               
+                
+                
             </li>
         </div>
     )

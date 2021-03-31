@@ -1,7 +1,7 @@
 import React, {useState} from "react";
 import RestaurantCard from "./RestaurantCard.js"
 
-function RestaurantList({restaurants, search, setSearch, locationFilter, deleteRestaurants}) {
+function RestaurantList({handleChange, rating, search, setSearch, locationFilter, deleteRestaurants, handleSubmit}) {
     
 
   
@@ -15,16 +15,11 @@ function RestaurantList({restaurants, search, setSearch, locationFilter, deleteR
         return (
         <RestaurantCard 
         key={restaurantObj.id}
-        // name={restaurant.name}
-        // image={restaurant.image}
-        // location={restaurant.location}
-        // cuisine={restaurant.cuisine}
-        // review={restaurant.review}
-        // rating={restaurant.rating}
-        // description={restaurant.description}
-        // address={restaurant.address}
         deleteRestaurants={deleteRestaurants}
         restaurant={restaurantObj}
+        handleChange={handleChange}
+        rating={rating}
+        handleSubmit={handleSubmit}
          />
 
         )
