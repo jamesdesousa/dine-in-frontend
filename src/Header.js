@@ -1,13 +1,14 @@
 import React, { useState } from "react";
 import Search from "./Search";
 import RestaurantForm from "./RestaurantForm";
+import Logo from "./Logo";
 
 function Header({search, setSearch, addRestaurant, restaurants, cuisineType, setCuisineType, locationType, setLocationType}) {
     
 
     return(
         <div className="header">
-            <h1 className="logo"> DINE-IN </h1>
+            
             <Search search={search} setSearch={setSearch}/>
             <RestaurantForm addRestaurant={addRestaurant}/>
             

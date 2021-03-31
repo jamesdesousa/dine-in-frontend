@@ -8,6 +8,7 @@ import RestaurantForm from './RestaurantForm';
 import RestaurantCard from "./RestaurantCard.js"
 import RestaurantDetails from './RestaurantDetails';
 import {useParams} from 'react-router-dom'
+import Logo from './Logo';
 
 
 
@@ -105,6 +106,7 @@ function addRestaurant(newRestaurant){
 
   return (
     <div >
+      <Logo />
       <Switch>
       <Route exact path="/restaurantlist">
       <Header search={search} setSearch={setSearch} addRestaurant={addRestaurant} restaurants={restaurants} cuisineType={cuisineType} setCuisineType={setCuisineType} locationType={locationType} setLocationType={setLocationType}/>
