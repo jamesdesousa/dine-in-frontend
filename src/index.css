@@ -5,16 +5,25 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  /* background-color: #eba834; */
+  background-color: #eba834;
+
+  
 
 }
-
+div { 
+  background-color: #eba834;
+  background: #eba834 no-repeat center center fixed; 
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: 100% 100%;
+}
 
 * {
-  margin: 0; 
-  padding: 0;
-  box-sizing: border-box;
-  background: #eba834;
+  /* margin: 0;  */
+  /* padding: 0; */
+  /* box-sizing: border-box; */
+  /* background: #eba834; */
 
   
 }

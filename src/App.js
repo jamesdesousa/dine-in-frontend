@@ -105,7 +105,7 @@ function addRestaurant(newRestaurant){
 
 
   return (
-    <div >
+    <div className = 'all'>
       <Logo />
       <Switch>
       <Route exact path="/restaurantlist">

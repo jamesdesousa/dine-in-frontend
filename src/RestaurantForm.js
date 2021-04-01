@@ -61,7 +61,7 @@ function RestaurantForm ({addRestaurant}) {
                     <option value= "5">Indian</option>
             </select>
 
-            <select value={location} onChange = {e => setLocation(e.target.value)} id="boroughsList">
+            <select value={location} onChange = {e => setLocation(e.target.value)} >
                     <option value="1">Brooklyn</option>
                     <option value="2">Queens</option>
                     <option value="3">Manhattan</option>
